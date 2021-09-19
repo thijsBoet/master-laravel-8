@@ -46,7 +46,7 @@ $posts = [
 
 Route::get('/posts', function () use ($posts) {
     // compact($posts) === ['posts'] => $posts
-    return view('posts.index', ['posts'=> $posts]);
+    return view('posts.index', ['posts'=> $posts])->name('posts.show');
 });
     
 Route::get('posts/{id}', function ($id)  use ($posts) {
@@ -59,3 +59,35 @@ Route::get('posts/{id}', function ($id)  use ($posts) {
 Route::get('/recent-posts/{days_ago?}', function ($daysAgo = 20) {
     return 'Post from ' . $daysAgo . ' days ago.';
 })->name('posts.recent.index');
+
+Route::prefix('/fun')->name('fun.')->group(function() use($posts){
+    Route::get('/responses', function () use ($posts) {
+        return response($posts, 201)
+            ->header('Content-Type', 'application/json')
+            ->cookie('MY_COOKIE', 'Matthijs Boet', 3600);
+    })->;
+
+    Route::get('/redirect', function () {
+        return redirect('/contact');
+    });
+
+    Route::get('/back', function () {
+        return back()->withInput();
+    });
+
+    Route::get('/named-route', function () {
+        return redirect()->route('posts.show', ['id' => 1]);
+    });
+
+    Route::get('/away', function () {
+        return redirect()->away('http://google.com');
+    });
+
+    Route::get('/json', function () use ($posts) {
+        return response()->json($posts);
+    });
+
+    Route::get('/download', function () use ($posts) {
+        return response()->download(public_path('/daniel.jpg'), 'milla-jovovich.jpg');
+    });
+});
