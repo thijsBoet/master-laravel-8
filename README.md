@@ -14,8 +14,8 @@ Udemy course "Master Laravel 8 for Beginners & Intermediate" by Piotr Jura
 9. [Deleting Models, Soft Deletes](./docs/0024-deleting.md)
 10. [Assets, JavaScript, Styles](./docs/0026-assets.md)
 11. [Testing basics](./docs/0028-testing.md)
-
-## Database Relations
+ 
+ ## Database Relations
 
 1. [One to One relations](./docs/0036-one-to-one.md)
 2. [One to Many relations](./docs/0039-one-to-many.md)
