@@ -4,7 +4,7 @@
 
 @section('content')
 	<h1>Home Page</h1>
-
+	<p>This is the content of the main page!</p>
 	<div>
 		@for ($i =1; $i <=10; $i++)
 			<div>The current value is {{ $i }}</div>
